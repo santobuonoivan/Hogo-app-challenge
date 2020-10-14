@@ -1,14 +1,17 @@
 FROM node:10
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+ENV NODE_PORT 3000
+ENV INSTALL_PATH /usr/src/app
+
+RUN mkdir -p $INSTALL_PATH
+WORKDIR $INSTALL_PATH
 
 COPY package*.json ./
 
-RUN npm instal
+RUN npm install
 
-COPY src ./
+COPY . .
 
-EXPOSE 3000
+EXPOSE $NODE_PORT
 
 CMD ["npm", "run", "dev"]

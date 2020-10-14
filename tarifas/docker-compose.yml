@@ -7,10 +7,12 @@ services:
         build: .
         ports: 
             - "3000:3000"
+        environment: 
+            - MONGO_URI=mongodb://mongo/mydatabase
         links: 
-            - mongo
-        volumes: /services:/usr/src/app
+            - mongo        
     mongo:
         container_name: mongodb
         image: mongo
-        ports: "27018:27017"
+        ports: 
+            - "27017:27017"

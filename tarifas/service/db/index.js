@@ -1,5 +1,13 @@
 const mongoose = require('mongoose');
 
-const db = await mongoose.connect('mongodb://nongo/mydatabase');
+const MONGODB_URI = process.env.MONGO_URI;
 
-exports.modules = db;
+mongoose
+  .connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  })
+  .then((db) => console.log("Mongodb is connected to", db.connection.host))
+  .catch((err) => console.error(err));
