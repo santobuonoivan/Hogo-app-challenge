@@ -1,0 +1,16 @@
+version: "3"
+
+services: 
+    tarifa:
+        container_name: tarifa_service
+        restart: always
+        build: .
+        ports: 
+            - "3000:3000"
+        links: 
+            - mongo
+        volumes: /services:/usr/src/app
+    mongo:
+        container_name: mongodb
+        image: mongo
+        ports: "27018:27017"
