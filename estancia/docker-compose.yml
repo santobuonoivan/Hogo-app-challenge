@@ -1,0 +1,18 @@
+version: "3"
+
+services: 
+    estancia:
+        container_name: estancia_service
+        restart: always
+        build: .
+        ports: 
+            - "3002:3002"
+        environment: 
+            - MONGO_URI=mongodb://mongo_estancias/mydatabase
+        links: 
+            - mongo_estancias        
+    mongo_estancias:
+        container_name: mongodb_estancias
+        image: mongo
+        ports: 
+            - "27020:27017"
