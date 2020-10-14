@@ -8,11 +8,11 @@ services:
         ports: 
             - "3000:3000"
         environment: 
-            - MONGO_URI=mongodb://mongo/mydatabase
+            - MONGO_URI=mongodb://mongo_tarifa/mydatabase
         links: 
-            - mongo        
-    mongo:
-        container_name: mongodb
+            - mongo_tarifa        
+    mongo_tarifa:
+        container_name: mongodb_tarifa
         image: mongo
         ports: 
             - "27017:27017"
