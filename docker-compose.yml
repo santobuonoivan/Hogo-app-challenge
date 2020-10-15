@@ -1,0 +1,73 @@
+version: '3'
+services:
+    estancia:
+        container_name: estancia_service
+        restart: always
+        build: ./estancia
+        ports: 
+            - "3002:3002"
+        environment: 
+            - MONGO_URI=mongodb://mongo_estancias/mydatabase
+        links: 
+            - mongo_estancias        
+    mongo_estancias:
+        container_name: mongodb_estancias
+        image: mongo
+        ports: 
+            - "27020:27017"
+        logging: 
+            driver: none
+
+    tarifa:
+        container_name: tarifa_service
+        restart: always
+        build: ./tarifas
+        ports: 
+            - "3000:3000"
+        environment: 
+            - MONGO_URI=mongodb://mongo_tarifa/mydatabase
+        links: 
+            - mongo_tarifa        
+    mongo_tarifa:
+        container_name: mongodb_tarifa
+        image: mongo
+        ports: 
+            - "27018:27017"
+        logging: 
+            driver: none
+
+    vehiculo:
+        container_name: vehiculo_service
+        restart: always
+        build: ./vehiculos
+        ports: 
+            - "3001:3001"
+        environment: 
+            - MONGO_URI=mongodb://mongo_vehiculos/mydatabase
+        links: 
+            - mongo_vehiculos        
+    mongo_vehiculos:
+        container_name: mongodb_vehiculos
+        image: mongo
+        ports: 
+            - "27019:27017"
+        logging: 
+            driver: none
+
+    saldos:
+        container_name: saldos_service
+        restart: always
+        build: ./saldos
+        ports: 
+            - "3004:3004"
+        environment: 
+            - MONGO_URI=mongodb://mongo_saldos/mydatabase
+        links: 
+            - mongo_saldos   
+    mongo_saldos:
+        container_name: mongodb_saldos
+        image: mongo
+        ports: 
+            - "27021:27017"
+        logging: 
+            driver: none

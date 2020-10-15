@@ -1,0 +1,18 @@
+version: "3"
+
+services: 
+    saldos:
+        container_name: saldos_service
+        restart: always
+        build: .
+        ports: 
+            - "3004:3000"
+        environment: 
+            - MONGO_URI=mongodb://mongo_saldos/mydatabase
+        links: 
+            - mongo_saldos        
+    mongo_saldos:
+        container_name: mongodb_saldos
+        image: mongo
+        ports: 
+            - "27020:27017"

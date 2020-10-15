@@ -6,6 +6,8 @@ router.use(cors());
 
 router.get('/',controller.getAll);
 
+router.get('/:chapa',controller.getTypeByChapa);
+
 router.post('/',controller.create);
 
 
