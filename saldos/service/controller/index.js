@@ -1,8 +1,7 @@
-const { getTarifaByType, getTypeByChapa } = require('./../repository');
+const repository = require('./../repository');
 const Saldo = require('./../models/Saldo');
 const fs = require('fs');
 const path = require('path');
-const { time } = require('console');
 
 exports.getImporte = async ( req, res, next ) => {
     const {placa} = req.params;
@@ -19,12 +18,12 @@ exports.addTime = async ( req, res, next ) => {
     const { placa } = req.params;
     const { tiempo } = req.body;
     try {
-        const updateSaldo = await Saldo.findOneAndUpdate({ placa },{$inc:{tiempo}},{new: true});
+        const updateSaldo = await Saldo.findOneAndUpdate({ placa },{$inc:{tiempo}});
         let type, tarifa;
         /** obtener type */
-        type = getTypeByChapa(placa);
+        type = await repository.getTypeByPlaca(placa);
         /** obtener tarifa */
-        tarifa = await getTarifaByType(type);
+        tarifa = await repository.getTarifaByType(type);
         if (!updateSaldo || type !== 'oficial') {
             const newSaldo = new Saldo({placa,tiempo,tarifa,type});
             res.status(201).send(newSaldo);
@@ -33,15 +32,32 @@ exports.addTime = async ( req, res, next ) => {
             const importe = Number(parseInt(tiempo) * tarifa).toFixed(2); 
             res.status(200).send({placa,type,taifa,importe});
         }
+        res.send({});
     } catch (error) {
         next(error);  
+    }
+}
+
+exports.monthBegins = async ( req, res, next ) => {
+    try {
+        const placasOficiales = await Saldo.find({ type: "oficial" });
+        /** delete estancias oficiales */
+        await repository.deleteOficialEstancia(placasOficiales);
+        /** delete saldos oficiales */
+        await Saldo.deleteMany({ pacla: { $in: lacasOficiales }});
+        /** reseteo tiempos a los residenciales */
+        await Saldo.updateMany({ type: "residencial"}, { $set: { tiempo: 0 }});
+
+        res.status(200).send({meesage: "comienzo de mes"});
+    } catch (error) {
+        next(error)
     }
 }
 
 exports.residentialPayment = async ( req, res, next ) => {
     const { filename } = req.body;
     try {
-        let saldos = Saldo.find({type: 'residencial'})
+        let saldos = await Saldo.find({type: 'residencial'})
         .map( saldo =>{
             saldo.importe = Number(parseInt(saldo.tiempo) * saldo.tarifa).toFixed(2);
         });

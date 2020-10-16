@@ -10,6 +10,9 @@ router.get('/',controller.getImporte);
 /** agregar tiempo de estancionamiento a residentes o no residentes*/
 router.put('/:placa',controller.addTime);
 
+/** comienza mes */
+router.post('/monthBegins', controller.monthBegins);
+
 /** genero el pago de residenciales */
 router.post('/payment',controller.residentialPayment);
 

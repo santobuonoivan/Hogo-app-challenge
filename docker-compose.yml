@@ -45,7 +45,7 @@ services:
         environment: 
             - MONGO_URI=mongodb://mongo_vehiculos/mydatabase
         links: 
-            - mongo_vehiculos        
+            - mongo_vehiculos       
     mongo_vehiculos:
         container_name: mongodb_vehiculos
         image: mongo
@@ -63,7 +63,10 @@ services:
         environment: 
             - MONGO_URI=mongodb://mongo_saldos/mydatabase
         links: 
-            - mongo_saldos   
+            - mongo_saldos
+            - vehiculo
+            - tarifa
+            - estancia
     mongo_saldos:
         container_name: mongodb_saldos
         image: mongo

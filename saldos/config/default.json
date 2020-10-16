@@ -1,4 +1,6 @@
 {
-    "TARIFA_SERVICE_URL": "localhost:3001",
-    "VEHICULO_SERVICE_URL": "localhost:3001"
+    "TARIFA_SERVICE_URL": "tarifa:3000",
+    "VEHICULO_SERVICE_URL": "vehiculo:3001",
+    "ESTANCIA_SERVICE_URL": "estancia:3002"
+    
 }

@@ -6,9 +6,11 @@ router.use(cors());
 
 router.get('/',controller.getAll);
 
-router.post('/',controller.entry);
+router.delete('/deleteOficialEstancia',controller.deleteOficialEstancia);
 
-router.put('/',controller.exit);
+router.post('/entry',controller.entry);
+
+router.put('/exit',controller.exit);
 
 
 module.exports = router;
