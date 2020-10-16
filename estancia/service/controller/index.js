@@ -44,9 +44,7 @@ exports.exit = async ( req, res, next ) => {
         
         /** si es no residencial devuelve importe a pagar */
         updateEstancia.ticket = undefined;
-        console.log("llega antes de add saldo");
         const result = await addSaldo(placa,diff);
-        console.log(result);
         if (result.body && result.body.importe){
             updateEstancia.ticket = result.body
         }

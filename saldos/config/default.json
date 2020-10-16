@@ -1,6 +1,6 @@
 {
-    "TARIFA_SERVICE_URL": "tarifa:3000",
-    "VEHICULO_SERVICE_URL": "vehiculo:3001",
-    "ESTANCIA_SERVICE_URL": "estancia:3002"
+    "TARIFA_SERVICE_URL": "http://tarifa:3000",
+    "VEHICULO_SERVICE_URL": "http://vehiculo:3001",
+    "ESTANCIA_SERVICE_URL": "http://estancia:3002"
     
 }
