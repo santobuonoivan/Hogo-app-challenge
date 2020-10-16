@@ -11,9 +11,9 @@ exports.getAll = async ( req, res, next ) => {
 }
 
 exports.getTypeByChapa = async ( req, res, next ) => {
-    const {chapa} = req.params;
+    const {placa} = req.params;
     try {
-        const type = await Vehiculo.findOne({chapa}).populated('type');
+        const {type} = await Vehiculo.findOne({placa});
         res.status(200).send({type});
     } catch (error) {
         next(error);
