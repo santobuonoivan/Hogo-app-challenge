@@ -2,6 +2,7 @@ const { getTarifaByType, getTypeByChapa } = require('./../repository');
 const Saldo = require('./../models/Saldo');
 const fs = require('fs');
 const path = require('path');
+const { time } = require('console');
 
 exports.getImporte = async ( req, res ) => {
     const {placa} = req.params;
@@ -14,27 +15,25 @@ exports.getImporte = async ( req, res ) => {
     }
 }
 
-exports.create = async ( req, res ) => {
-    const {placa, tiempo} = req.body;
-    try {
-        /** obtener type */
-        const type = getTypeByChapa(placa);
-        /** obtener tarifa */
-        const tarifa = await getTarifaByType(type);
-
-        const newSaldo = new Saldo({placa,tiempo,tarifa,type});
-        const save = await newSaldo.save();        
-        res.status(201).send(save);        
-    } catch (error) {
-        res.status(erro.status).send({message: error.message});
-    }
-}
 
 exports.addTime = async ( req, res ) => {
     const { placa } = req.params;
+    const { tiempo } = req.body;
     try {
         const updateSaldo = await Saldo.findOneAndUpdate({ placa },{$inc:{tiempo}},{new: true});
-        res.status(200).send(updateSaldo);
+        let type, tarifa;
+        /** obtener type */
+        type = getTypeByChapa(placa);
+        /** obtener tarifa */
+        tarifa = await getTarifaByType(type);
+        if (!updateSaldo || type !== 'oficial') {
+            const newSaldo = new Saldo({placa,tiempo,tarifa,type});
+            res.status(201).send(newSaldo);
+        }
+        if (type === 'no resicencial' && tiempo > 0) {
+            const importe = Number(parseInt(tiempo) * tarifa).toFixed(2); 
+            res.status(200).send({placa,type,taifa,importe});
+        }
     } catch (error) {
         res.status(erro.status).send({message: error.message});
     }

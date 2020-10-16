@@ -7,14 +7,11 @@ router.use(cors());
 /** obtener importe de no residenciales */
 router.get('/',controller.getImporte);
 
-/** agregar nuevo cehiculo */
-router.post('/',controller.create);
-
-/** agregar tiempo de estancionamiento a residentes */
-router.post('/',controller.addTime);
+/** agregar tiempo de estancionamiento a residentes o no residentes*/
+router.put('/:placa',controller.addTime);
 
 /** genero el pago de residenciales */
-router.post('/',controller.residentialPayment);
+router.post('/payment',controller.residentialPayment);
 
 
 module.exports = router;
