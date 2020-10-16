@@ -1,7 +1,7 @@
 {
-  "name": "estancia",
+  "name": "apidoc",
   "version": "1.0.0",
-  "description": "Estancia microservicio",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node service/index.js",
@@ -11,13 +11,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@hapi/joi": "^17.1.1",
-    "axios": "^0.20.0",
-    "config": "^3.3.2",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "moment": "^2.29.1",
-    "mongoose": "^5.10.9"
+    "swagger-jsdoc": "^4.3.0",
+    "swagger-ui-express": "^4.1.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.5"

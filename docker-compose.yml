@@ -71,3 +71,9 @@ services:
             - "27021:27017"
         logging: 
             driver: none
+    apidocs:
+        container_name: apidocs_service
+        restart: always
+        build: ./apidoc
+        ports: 
+            - "3005:3005"

@@ -4,7 +4,7 @@ const Tarifa = require('./../models/Tarifa');
 exports.getTarifaByType = async ( req, res, next ) => {
     const {type} = req.params;
     try {
-        const tarifa = await Tarifa.find({type});
+        const tarifa = await Tarifa.findOne({type});
         res.send(tarifa);    
     } catch (error) {
         next(error);  
