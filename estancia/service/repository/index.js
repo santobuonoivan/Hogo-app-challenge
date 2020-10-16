@@ -1,5 +1,6 @@
 const axios = require('axios');
-const SALDOS_SERVICES_URL = 'localhost:3004';
+const config = require('config');
+const SALDOS_SERVICES_URL = config.get("SALDOS_SERVICES_URL");
 
 exports.addSaldo = async(placa, tiempo) => {
     const body = { tiempo };

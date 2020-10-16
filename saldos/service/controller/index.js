@@ -15,7 +15,6 @@ exports.getImporte = async ( req, res ) => {
     }
 }
 
-
 exports.addTime = async ( req, res ) => {
     const { placa } = req.params;
     const { tiempo } = req.body;
@@ -56,14 +55,14 @@ exports.residentialPayment = async ( req, res ) => {
             fs.appendFile(uri,text,{ encoding: 'utf8' }, (err) =>{ if( err ) throw err });
         }
 
-        var stat = fs.statSync(uri);
+        const stat = fs.statSync(uri);
         res.writeHead(200, {
             'Content-Type': 'application/text',
             'Content-Length': stat.size,
             'Content-Disposition': 'attachment; filename=' + fileName + '.txt'
         });
 
-        let readStream = fs.createReadStream(filePath);
+        let readStream = fs.createReadStream(uri);
         readStream.pipe(res);
 
     } catch (error) {

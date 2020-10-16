@@ -1,6 +1,7 @@
 const axios = require('axios');
-const TARIFA_SERVICE_URL = 'localhost:3000';
-const VEHICULO_SERVICE_URL = 'localhost:3001';
+const config = require('config');
+const TARIFA_SERVICE_URL = config.get("TARIFA_SERVICE_URL");
+const VEHICULO_SERVICE_URL = config.get("VEHICULO_SERVICE_URL");
 
 
 exports.getTarifaByType = async (type) => {

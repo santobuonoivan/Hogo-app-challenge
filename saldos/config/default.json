@@ -1,0 +1,4 @@
+{
+    "TARIFA_SERVICE_URL": "localhost:3001",
+    "VEHICULO_SERVICE_URL": "localhost:3001"
+}
