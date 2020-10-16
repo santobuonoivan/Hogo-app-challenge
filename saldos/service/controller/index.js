@@ -4,18 +4,18 @@ const fs = require('fs');
 const path = require('path');
 const { time } = require('console');
 
-exports.getImporte = async ( req, res ) => {
+exports.getImporte = async ( req, res, next ) => {
     const {placa} = req.params;
     try {
         const saldo = await Saldo.find({placa});
         const importe = Number(parseInt(saldo.tiempo) * saldo.tarifa).toFixed(2);
         res.status(200).send({importe,placa});        
     } catch (error) {
-        res.status(erro.status).send({message: error.message});
+        next(error);  
     }
 }
 
-exports.addTime = async ( req, res ) => {
+exports.addTime = async ( req, res, next ) => {
     const { placa } = req.params;
     const { tiempo } = req.body;
     try {
@@ -34,11 +34,11 @@ exports.addTime = async ( req, res ) => {
             res.status(200).send({placa,type,taifa,importe});
         }
     } catch (error) {
-        res.status(erro.status).send({message: error.message});
+        next(error);  
     }
 }
 
-exports.residentialPayment = async ( req, res ) => {
+exports.residentialPayment = async ( req, res, next ) => {
     const { filename } = req.body;
     try {
         let saldos = Saldo.find({type: 'residencial'})
@@ -66,6 +66,6 @@ exports.residentialPayment = async ( req, res ) => {
         readStream.pipe(res);
 
     } catch (error) {
-        res.status(erro.status).send({message: error.message});
+        next(error);  
     }
 }

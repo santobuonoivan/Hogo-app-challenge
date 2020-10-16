@@ -3,17 +3,17 @@ const Estancia = require('../models/Estancia');
 const { addSaldo } = require('./../repository');
 const moment =require('moment');
 
-exports.getAll = async ( req, res ) => {
+exports.getAll = async ( req, res, next ) => {
     try {
         const estancias = await Estancia.find();
         res.send(estancias);
     } catch (error) {
-        res.status(erro.status).send({message: error.message});  
+        next(error);  
     }
     
 }
 
-exports.entry = async ( req, res ) => {
+exports.entry = async ( req, res, next ) => {
     const {placa} = req.body;
     const entrada = moment().format('YYYY-MM-DD HH:mm:ss');
     try {
@@ -22,11 +22,11 @@ exports.entry = async ( req, res ) => {
         addSaldo(placa, 0)
         res.status(201).send(save);    
     } catch (error) {
-        res.status(erro.status).send({message: error.message});  
+        next(error);    
     }
 }
 
-exports.exit = async ( req, res ) => {
+exports.exit = async ( req, res, next ) => {
     const {placa} = req.body;
     const salida = moment().format('YYYY-MM-DD HH:mm:ss');
     try {
@@ -40,6 +40,6 @@ exports.exit = async ( req, res ) => {
         }
         res.status(200).send(updateEstancia);
     } catch (error) {
-        res.status(erro.status).send({message: error.message});  
+        next(error);  
     }
 }
