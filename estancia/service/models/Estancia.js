@@ -1,6 +1,6 @@
 const {Schema, model} = require('mongoose');
 
-const EstanciaSchema = new Schema({
+let EstanciaSchema = new Schema({
     placa: {
         type: String,
         required: true

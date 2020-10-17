@@ -10,8 +10,8 @@ exports.getTarifaByType = async (type) => {
     const result = await fetch(url, {
         method: 'GET',
     });
-    const {tarifa} = await result.json();
-    return tarifa;
+    const {importe} = await result.json();    
+    return importe;
 }
 
 exports.getTypeByPlaca = async (placa) => {
@@ -27,7 +27,7 @@ exports.deleteOficialEstancia = async ( placas ) => {
     const result = await fetch(ESTANCIA_SERVICE_URL,{
         method: 'DELETE',
         body: JSON.stringify(placas),
-        headers: { 'Content-Type': 'application/json' }
+        //headers: { 'Content-Type': 'application/json' }
     });
     return await result.json(); 
 

@@ -16,23 +16,29 @@ exports.getImporte = async ( req, res, next ) => {
 
 exports.addTime = async ( req, res, next ) => {
     const { placa } = req.params;
-    const { tiempo } = req.body;
+    let { tiempo } = req.body;
+    tiempo = tiempo || 0;
     try {
         const updateSaldo = await Saldo.findOneAndUpdate({ placa },{$inc:{tiempo}});
         let type, tarifa;
         /** obtener type */
         type = await repository.getTypeByPlaca(placa);
+
         /** obtener tarifa */
         tarifa = await repository.getTarifaByType(type);
+
+        let result={},status = 200;
         if (!updateSaldo || type !== 'oficial') {
             const newSaldo = new Saldo({placa,tiempo,tarifa,type});
-            res.status(201).send(newSaldo);
+            //res.status(201).send(newSaldo);
+            result = newSaldo;
+            status = 201;
         }
-        if (type === 'no resicencial' && tiempo > 0) {
-            const importe = Number(parseInt(tiempo) * tarifa).toFixed(2); 
-            res.status(200).send({placa,type,taifa,importe});
+        if (type === 'no residencial' && tiempo > 0) {
+            const importe = Number(parseInt(tiempo) * tarifa).toFixed(2);
+            result= {placa,type,tarifa,tiempo,importe};    
         }
-        res.send({});
+        res.status(status).send(result);
     } catch (error) {
         next(error);  
     }

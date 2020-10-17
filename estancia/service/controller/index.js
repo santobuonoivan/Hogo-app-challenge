@@ -40,15 +40,13 @@ exports.exit = async ( req, res, next ) => {
     const salida = moment().format('YYYY-MM-DD HH:mm:ss');
     try {
         let updateEstancia = await Estancia.findOneAndUpdate({ placa , salida: undefined},{$set:{salida}},{new: true});
-        const diff = moment(updateEstancia.salida).diff(moment(updateEstancia.entrada,'minutes'));
-        
-        /** si es no residencial devuelve importe a pagar */
-        updateEstancia.ticket = undefined;
-        const result = await addSaldo(placa,diff);
-        if (result.body && result.body.importe){
-            updateEstancia.ticket = result.body
+        let result = {};
+        if(updateEstancia){
+            const diff = moment(updateEstancia.salida).diff(moment(updateEstancia.entrada),'minutes');
+            /** si es no residencial devuelve importe a pagar */
+            result = await addSaldo(placa,diff);
         }
-        res.status(200).send(updateEstancia);
+        res.status(200).send(result);
     } catch (error) {
         next(error);  
     }
