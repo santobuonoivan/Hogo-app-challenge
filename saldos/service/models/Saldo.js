@@ -17,7 +17,10 @@ const SaldoSchema = new Schema({
     type: {
         type: String,
         required: true
-    },    
+    },
+    importe: {
+        type: Number,
+    }  
 },{
     timestamps: true
 });

@@ -10,7 +10,8 @@ COPY package*.json ./
 
 RUN npm install
 
-COPY . .
+COPY ./service ./service
+COPY ./config ./config
 
 EXPOSE $NODE_PORT
 

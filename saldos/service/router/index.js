@@ -4,8 +4,10 @@ const cors = require('cors');
 const controller = require('../controller');
 router.use(cors());
 
-/** obtener importe de no residenciales */
-router.get('/',controller.getImporte);
+/** obtener todos */
+router.get('/',controller.getAll);
+/** delete todos residenciales */
+router.delete('/',controller.deleteAll);
 
 /** agregar tiempo de estancionamiento a residentes o no residentes*/
 router.put('/:placa',controller.addTime);

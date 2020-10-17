@@ -9,7 +9,9 @@ services:
         environment: 
             - MONGO_URI=mongodb://mongo_estancias/mydatabase
         links: 
-            - mongo_estancias        
+            - mongo_estancias
+        volumes: 
+            - ./estancia:/usr/src/app   
     mongo_estancias:
         container_name: mongodb_estancias
         image: mongo
@@ -27,7 +29,9 @@ services:
         environment: 
             - MONGO_URI=mongodb://mongo_tarifa/mydatabase
         links: 
-            - mongo_tarifa        
+            - mongo_tarifa
+        volumes: 
+            - ./tarifas:/usr/src/app      
     mongo_tarifa:
         container_name: mongodb_tarifa
         image: mongo
@@ -45,7 +49,9 @@ services:
         environment: 
             - MONGO_URI=mongodb://mongo_vehiculos/mydatabase
         links: 
-            - mongo_vehiculos       
+            - mongo_vehiculos
+        volumes: 
+            - ./vehiculos:/usr/src/app     
     mongo_vehiculos:
         container_name: mongodb_vehiculos
         image: mongo
@@ -64,9 +70,8 @@ services:
             - MONGO_URI=mongodb://mongo_saldos/mydatabase
         links: 
             - mongo_saldos
-            - vehiculo
-            - tarifa
-            - estancia
+        volumes: 
+            - ./saldos:/usr/src/app 
     mongo_saldos:
         container_name: mongodb_saldos
         image: mongo
