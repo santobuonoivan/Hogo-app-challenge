@@ -74,7 +74,7 @@ exports.monthBegins = async ( req, res, next ) => {
 }
 
 exports.residentialPayment = async ( req, res, next ) => {
-    const { filename } = req.body;
+    const { filename } = req.params;
     try {
         let saldos = await Saldo.find({type: 'residencial'})
         
@@ -96,12 +96,11 @@ exports.residentialPayment = async ( req, res, next ) => {
         res.writeHead(200, {
             'Content-Type': 'application/text',
             'Content-Length': stat.size,
-            'Content-Disposition': 'attachment; filename=' + fileName + '.txt'
+            'Content-Disposition': 'attachment; filename=' + filename + '.txt'
         });
 
         let readStream = fs.createReadStream(uri);
         readStream.pipe(res);
-       res.send(saldos);
     } catch (error) {
         next(error);  
     }

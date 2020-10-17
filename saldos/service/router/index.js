@@ -16,7 +16,7 @@ router.put('/:placa',controller.addTime);
 router.post('/monthBegins', controller.monthBegins);
 
 /** genero el pago de residenciales */
-router.post('/payment',controller.residentialPayment);
+router.get('/payment/:filename',controller.residentialPayment);
 
 
 module.exports = router;
