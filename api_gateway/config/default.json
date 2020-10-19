@@ -1,0 +1,8 @@
+{
+    "TARIFA_SERVICE_URL": "http://tarifa:3000",
+    "VEHICULO_SERVICE_URL": "http://vehiculo:3001",
+    "ESTANCIA_SERVICE_URL": "http://estancia:3002",
+    "SALDOS_SERVICE_URL": "http://saldos:3004",
+    "API_DOC_SERVICE_URL": "http://apidocs:3005",
+    "USER_SERVICE_URL": "http://user_auth:3006"
+}

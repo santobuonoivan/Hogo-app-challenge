@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const axios = require('axios');
 const port = process.env.NODE_PORT || process.env.PORT || 3004;
 
 const app = express();

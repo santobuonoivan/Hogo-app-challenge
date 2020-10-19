@@ -98,7 +98,7 @@ services:
         links: 
             - mongo_user_auths
         volumes: 
-            - ./user:/usr/src/app    
+            - ./user:/usr/src/app
     mongo_user_auths:
         container_name: mongodb_user_auths
         image: mongo
@@ -106,3 +106,12 @@ services:
             - "27022:27017"
         logging: 
             driver: none
+
+    api_gateway:
+        container_name: api_gateway_service
+        restart: always
+        build: ./api_gateway
+        ports: 
+            - "5000:5000"       
+        volumes: 
+            - ./api_gateway:/usr/src/app

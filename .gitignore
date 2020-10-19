@@ -7,4 +7,4 @@ saldos/.idea
 .idea
 saldos/service/paymentsFiles/
 user/node_modules
-api-gateway/node_modules
+api_gateway/node_modules

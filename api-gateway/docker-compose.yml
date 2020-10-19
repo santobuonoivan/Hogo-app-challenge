@@ -1,9 +1,0 @@
-version: "3"
-
-services: 
-    api_gateway:
-        container_name: api_gateway_service
-        restart: always
-        build: .
-        ports: 
-            - "3007:3007"
