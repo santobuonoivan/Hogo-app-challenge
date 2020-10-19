@@ -22,3 +22,8 @@ docker-compose up
     "APIDOC_SERVICE_URL": "localhost:3005/api-docs",
     
 ```
+
+
+## Diagrama
+
+![Alt text](./diagrama/diagramaDeFlujoHugoChallenge.png?raw=true "Diagrama de Flujo")

@@ -1,0 +1,498 @@
+{
+	"info": {
+		"_postman_id": "da1ca1d5-0a58-48e9-90b6-f1d8f2dc3777",
+		"name": "hugo-app with apigateway",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "tarifa",
+			"item": [
+				{
+					"name": "get tarifa by type",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{apigateway}}/tarifas/residencial",
+							"host": [
+								"{{apigateway}}"
+							],
+							"path": [
+								"tarifas",
+								"residencial"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"residencial\",\n    \"importe\": 0.05\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apigateway}}/tarifas",
+							"host": [
+								"{{apigateway}}"
+							],
+							"path": [
+								"tarifas"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "vehiculo",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"residencial\",\n    \"placa\": \"ABC666\",\n    \"marca\": \"BMW\",\n    \"color\": \"azul\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apigateway}}/vehiculos",
+							"host": [
+								"{{apigateway}}"
+							],
+							"path": [
+								"vehiculos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{apigateway}}/vehiculos",
+							"host": [
+								"{{apigateway}}"
+							],
+							"path": [
+								"vehiculos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get type by chapa",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{apigateway}}/vehiculos/ABC666",
+							"host": [
+								"{{apigateway}}"
+							],
+							"path": [
+								"vehiculos",
+								"ABC666"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "estancia",
+			"item": [
+				{
+					"name": "entry",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"placa\": \"ABC111\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apigateway}}/estancias/entry",
+							"host": [
+								"{{apigateway}}"
+							],
+							"path": [
+								"estancias",
+								"entry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "exit",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"placa\": \"ABC111\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apigateway}}/estancias/exit",
+							"host": [
+								"{{apigateway}}"
+							],
+							"path": [
+								"estancias",
+								"exit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{apigateway}}/estancias/",
+							"host": [
+								"{{apigateway}}"
+							],
+							"path": [
+								"estancias",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "saldos",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{apigateway}}/saldos/",
+							"host": [
+								"{{apigateway}}"
+							],
+							"path": [
+								"saldos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete all",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{apigateway}}/saldos/",
+							"host": [
+								"{{apigateway}}"
+							],
+							"path": [
+								"saldos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "month Begins",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{apigateway}}/saldos/monthBegins",
+							"host": [
+								"{{apigateway}}"
+							],
+							"path": [
+								"saldos",
+								"monthBegins"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "payment",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/txt",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"filename\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apigateway}}/saldos/payment",
+							"host": [
+								"{{apigateway}}"
+							],
+							"path": [
+								"saldos",
+								"payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add saldo",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tiempo\": 1000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apigateway}}/saldos/ABC666",
+							"host": [
+								"{{apigateway}}"
+							],
+							"path": [
+								"saldos",
+								"ABC666"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "apidoc",
+			"item": [],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apigateway}}/users",
+							"host": [
+								"{{apigateway}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"juan\",\n    \"email\": \"juan@juan.com\",\n    \"password\": \"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apigateway}}/users/",
+							"host": [
+								"{{apigateway}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"juan2@juan.com\",\n    \"password\": \"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apigateway}}/users/auth",
+							"host": [
+								"{{apigateway}}"
+							],
+							"path": [
+								"users",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
