@@ -2,11 +2,14 @@
 
 # Hugo-app-challenge
 Hugo app Challenge is a microservices Test
+
+```
 . microservices architecture
 . node js
 . mongo DB
 . Docker
 . docker compose
+```
 
 ## Installation
 
