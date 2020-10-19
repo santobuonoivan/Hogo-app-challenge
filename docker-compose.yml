@@ -85,3 +85,24 @@ services:
         build: ./apidoc
         ports: 
             - "3005:3005"
+            
+    user_auth:
+        container_name: user_auth_service
+        restart: always
+        build: ./user
+        ports: 
+            - "3006:3006"
+        environment: 
+            - MONGO_URI=mongodb://mongo_user_auths/mydatabase
+            - TOKEN_LIVE_TIME=24h
+        links: 
+            - mongo_user_auths
+        volumes: 
+            - ./user:/usr/src/app    
+    mongo_user_auths:
+        container_name: mongodb_user_auths
+        image: mongo
+        ports: 
+            - "27022:27017"
+        logging: 
+            driver: none

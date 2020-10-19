@@ -1,0 +1,21 @@
+version: "3"
+
+services: 
+    user_auth:
+        container_name: user_auth_service
+        restart: always
+        build: .
+        ports: 
+            - "3005:3005"
+        environment: 
+            - MONGO_URI=mongodb://mongo_user_auths/mydatabase
+            - TOKEN_LIVE_TIME=24h
+        links: 
+            - mongo_user_auths        
+    mongo_user_auths:
+        container_name: mongodb_user_auths
+        image: mongo
+        ports: 
+            - "27020:27017"
+        logging: 
+            driver: none
