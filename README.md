@@ -2,6 +2,11 @@
 
 # Hugo-app-challenge
 Hugo app Challenge is a microservices Test
+. microservices architecture
+. node js
+. mongo DB
+. Docker
+. docker compose
 
 ## Installation
 
@@ -15,15 +20,11 @@ docker-compose up
 ## Usage
 
 ```
-    "TARIFA_SERVICE_URL": "localhost:3000"
-    "VEHICULO_SERVICE_URL": "localhost:3001"
-    "ESTANCIA_SERVICE_URL": "localhost:3002"
-    "SALDOS_SERVICE_URL": "localhost:3004",
-    "APIDOC_SERVICE_URL": "localhost:3005/api-docs",
+    All requests go through an api gateway and this redirects it to each microservice.
     
 ```
 
 
 ## Diagrama
 
-![Alt text](./diagrama/diagramaDeFlujoHugoChallenge.png?raw=true "Diagrama de Flujo")
+![Alt text](./diagrama/diagramaDeFlujoHugoChallenge.png?raw=true "Diagrama")
