@@ -6,4 +6,4 @@ apidoc/node_modules
 saldos/.idea
 .idea
 saldos/service/paymentsFiles/
-auth/node_modules
+user/node_modules
