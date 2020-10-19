@@ -1,5 +1,5 @@
 {
-  "name": "saldos",
+  "name": "api-gateway",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,14 +10,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "config": "^3.3.2",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "mongoose": "^5.10.9",
-    "node-fetch": "^2.6.1"
-  },
   "devDependencies": {
     "nodemon": "^2.0.5"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1"
   }
 }
