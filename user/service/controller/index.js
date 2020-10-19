@@ -1,6 +1,5 @@
 
 const User = require('../models/User');
-const services = require('../services');
 
 exports.getAll = async ( req, res, next ) => {
     try {
@@ -29,16 +28,17 @@ exports.registry = async ( req, res, next ) => {
 
 exports.login = async ( req, res, next ) => {
     const {email, password} = req.body;
+    let isAuthenticate = false;
     try {
-        let user = await User.findOne({ email });
-        if(!user) throw new Error('User not found');
+        let findUser = await User.findOne({ email });
+        if(!findUser) throw new Error('User not found');
 
-        const match = await user.matchPassword(password);
+        const match = await findUser.matchPassword(password);
         if(!match) throw new Error('Bad credentials');
-
-        const token = await services.generateToken(user);
-        res.status(200).send({token});
+        isAuthenticate = true;
+        res.status(200).send({email, password, isAuthenticate});
     } catch (error) {
         next(error);  
     }
 }
+

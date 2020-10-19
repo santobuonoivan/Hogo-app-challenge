@@ -2,13 +2,15 @@ const {Router} = require('express');
 const router = Router();
 const cors = require('cors');
 const controller = require('./../controllers/vehiculoController');
+const Authentication = require('./../middleware/Authentication');
+
 router.use(cors());
 
-router.get('/',controller.getAll);
+router.get('/', [Authentication],controller.getAll);
 
-router.get('/:placa',controller.getTypeByChapa);
+router.get('/:placa', [Authentication],controller.getTypeByChapa);
 
-router.post('/',controller.create);
+router.post('/', [Authentication],controller.create);
 
 
 module.exports = router;

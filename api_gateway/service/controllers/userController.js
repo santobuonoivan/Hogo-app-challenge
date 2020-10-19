@@ -1,6 +1,7 @@
 
 const fetch = require('node-fetch');
 const USER_SERVICE_URL = require('config').get('USER_SERVICE_URL')+'/users';
+const services = require('./../services');
 
 exports.getAll = async ( req, res, next ) => {
     try {
@@ -36,8 +37,10 @@ exports.login = async ( req, res, next ) => {
             method: 'POST',
             body: JSON.stringify(body)
         });
-        const token = await response.json();
-        res.status(response.status).send(token);
+        const user = await response.json();
+        if (!user.isAuthenticate) throw new Error('Authentication Error');
+        const token = await services.generateToken(user)
+        res.status(response.status).send({token});
     } catch (error) {
         next(error);  
     }

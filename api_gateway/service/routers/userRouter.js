@@ -2,11 +2,13 @@ const {Router} = require('express');
 const router = Router();
 const cors = require('cors');
 const controller = require('../controllers/userController');
+const Authentication = require('./../middleware/Authentication');
+
 router.use(cors());
 
-router.get('/',controller.getAll);
+router.get('/', [Authentication],controller.getAll);
 
-router.post('/',controller.registry);
+router.post('/', [Authentication],controller.registry);
 
 router.post('/auth',controller.login);
 

@@ -4,9 +4,9 @@ const port = process.env.NODE_PORT || process.env.PORT || 3000;
 
 const app = express();
 
-const estanciaRouter = require('./router/estanciaRouter');
-const saldosRouter = require('./router/saldosRouter');
-const userRouter = require('./router/userRouter');
+const estanciaRouter = require('./routers/estanciaRouter');
+const saldosRouter = require('./routers/saldosRouter');
+const userRouter = require('./routers/userRouter');
 const apidocRouter = require('./routers/apidocRouter');
 const tarifasRouter = require('./routers/tarifasRouter');
 const vehiculoRouter = require('./routers/vehiculoRouter');

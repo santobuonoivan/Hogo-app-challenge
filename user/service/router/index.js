@@ -10,5 +10,4 @@ router.post('/',controller.registry);
 
 router.post('/auth',controller.login);
 
-
 module.exports = router;

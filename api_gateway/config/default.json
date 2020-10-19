@@ -4,5 +4,7 @@
     "ESTANCIA_SERVICE_URL": "http://estancia:3002",
     "SALDOS_SERVICE_URL": "http://saldos:3004",
     "API_DOC_SERVICE_URL": "http://apidocs:3005",
-    "USER_SERVICE_URL": "http://user_auth:3006"
+    "USER_SERVICE_URL": "http://user_auth:3006",
+    "jwtPrivateKey": "f35kYHa9gI0GFIcRqqEowzFMrBHoACBiZ38oxKwupaZOz9cfnvLy91KGT6c+TVU93rSmMTs7Vl/fxZzh4UtZIkaJnIz67uhYShNS5gTJvhQm/W6C7qDsSHGKG5+t4sZ5/VyKDqRNzp4l53q/zMF4IfmDEeWXtDIICaiCNMDBldbGYtjh8VwTVULHBiELNriB9f6NhLmPgKzAaCeVjDaqTjNpP0lHTsMiAPNgW0z6A2zX2UlrYjPBa/xrllwzkqzr8ciXR9UmK2fnxbUf46a/LgFKlHr2Zz+tWn9+F+476k14/1ReCpcjr+LCn9KVx2JLBQNd2KftD7pekrfGASFq"
+
 }
